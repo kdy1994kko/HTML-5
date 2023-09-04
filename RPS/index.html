@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wassgoodiiee Rock Paper Scissors</title>
+    <style>
+        body {
+            background-image: url('https://media.istockphoto.com/photos/render-mma-arena-mma-octagon-cages-picture-id1158543289?k=6&m=1158543289&s=170667a&w=0&h=nelEUU22VDdXDtkgbZWv3XJCvRCaCKZJ2X91kzxNuo0=');
+            background-size: cover;
+        }
+        
+        #game-container {
+            text-align: center;
+            padding-top: 100px;
+            color: white;
+        }
+        
+        .choice-btn {
+            display: inline-block;
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            border: none;
+            background-size: cover;
+            cursor: pointer;
+        }
+        
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+            color: white;
+        }
+        
+        #score {
+            font-size: 20px;
+            margin-top: 20px;
+            color: white;
+        }
+        
+        .shake {  /* New */
+            animation: shake 1s infinite;
+        }
+
+        @keyframes shake {  /* New */ 
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            25%, 75% {
+                transform: translateX(-10px);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Wassgoodiiee Rock Paper Scissors</h1>
+        
+        <div>
+            <button class="choice-btn" onclick="play('rock')" style="background-image: url('rock.png');"></button>
+            <button class="choice-btn" onclick="play('paper')" style="background-image: url('paper.png');"></button>
+            <button class="choice-btn" onclick="play('scissors')" style="background-image: url('scissors.png');"></button>
+        </div>
+        
+        <div id="result"></div>
+        <div id="score">Score: User - 0, Computer - 0</div>
+    </div>
+    
+    <script>
+        // Initialize scores
+        var userScore = 0;
+        var computerScore = 0;
+
+        function play(userChoice) {
+            var choices = ['rock', 'paper', 'scissors'];
+            var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            var result = compareChoices(userChoice, computerChoice);
+
+            // Update scores
+            if (result === 'You win!') {
+                userScore++;
+            } else if (result === 'Computer wins!') {
+                computerScore++;
+            }
+
+            var userButton = document.querySelector("button[onclick=\"play('" + userChoice + "')\"]");
+            var computerButton = document.querySelector("button[onclick=\"play('" + computerChoice + "')\"]");
+
+            userButton.classList.add('shake');
+            computerButton.classList.add('shake');
+
+            setTimeout(function() {
+                userButton.classList.remove('shake');
+                computerButton.classList.remove('shake');
+            }, 1000); 
+
+            document.getElementById('result').innerHTML = 'You chose ' + userChoice + '. Computer chose ' + computerChoice + '.<br>' + result;
+            document.getElementById('score').innerHTML = 'Score: User - ' + userScore + ', Computer - ' + computerScore;
+        }
+        
+        function compareChoices(userChoice, computerChoice) {
+            if (userChoice === computerChoice) {
+                return "It's a tie!";
+            }
+            
+            if ((userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'paper' && computerChoice === 'rock') ||
+                (userChoice === 'scissors' && computerChoice === 'paper')) {
+                return 'You win!';
+            }
+            
+            return 'Computer wins!';
+        }
+    </script>
+</body>
+</html>
