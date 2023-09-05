@@ -71,8 +71,8 @@ function startGame() {
 
 }
 
-function hit() { // line 69
-    if (!canHit) { // line 11
+function hit() {  // line 69
+    if (!canHit) {  // line 11
         return;
     }
 
@@ -85,8 +85,13 @@ function hit() { // line 69
 
     if (reduceAce(yourSum, yourAceCount) > 21) { // line 142 to line 148 == //A, J, 8 -> 1 + 10 + 8
         canHit = false;
+        stay(); // Auto invoke the stay function if player goes past 21
     }
 
+    if (!canHit) {
+        document.getElementById("hit").disabled = true; // Disable hit button after auto stay
+        document.getElementById("stay").disabled = true; // Disable stay button after auto stay
+    }
 }
 
 function stay() { // line 70
@@ -99,19 +104,29 @@ function stay() { // line 70
     let message = "";
     if (yourSum > 21) {
         message = "You Lose!";
+        document.getElementById("hit").disabled = true; // Disable Hit button
+        document.getElementById("stay").disabled = true; // Disable Stay button
     }
     else if (dealerSum > 21) {
         message = "You win!";
+        document.getElementById("hit").disabled = true; // Disable Hit button
+        document.getElementById("stay").disabled = true; // Disable Stay button
     }
     //both you and dealer <= 21
     else if (yourSum == dealerSum) {
         message = "Tie!";
+        document.getElementById("hit").disabled = true; // Disable Hit button
+        document.getElementById("stay").disabled = true; // Disable Stay button
     }
     else if (yourSum > dealerSum) {
         message = "You Win!";
+        document.getElementById("hit").disabled = true; // Disable Hit button
+        document.getElementById("stay").disabled = true; // Disable Stay button
     }
     else if (yourSum < dealerSum) {
         message = "You Lose!";
+        document.getElementById("hit").disabled = true; // Disable Hit button
+        document.getElementById("stay").disabled = true; // Disable Stay button
     }
 
     document.getElementById("dealer-sum").innerText = dealerSum; // index.html == line 12
@@ -151,6 +166,3 @@ function playAgain() {
     location.reload();
 }
 
-
-// https://github.com/ImKennyYip/black-jack/tree/master
-// https://www.youtube.com/watch?v=bMYCWccL-3U&list=PLrgu_b7U8aQgrzmoqRSuH3KqWXzxaXuW6
