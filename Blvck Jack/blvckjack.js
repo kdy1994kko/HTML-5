@@ -147,6 +147,10 @@ function reduceAce(playerSum, playerAceCount) { // line 86
     return playerSum;
 }
 
+function playAgain() {
+    location.reload();
+}
+
 
 // https://github.com/ImKennyYip/black-jack/tree/master
 // https://www.youtube.com/watch?v=bMYCWccL-3U&list=PLrgu_b7U8aQgrzmoqRSuH3KqWXzxaXuW6
