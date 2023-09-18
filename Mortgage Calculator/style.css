@@ -1,0 +1,44 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-image: url('https://thumbs.dreamstime.com/b/american-house-beautiful-landscape-vivid-flowers-grey-exterior-entrance-porch-red-door-front-yard-flower-stones-43842697.jpg');
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    text-align: center;
+}
+  
+.calculator {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+}
+  
+label {
+    display: block;
+    margin-top: 10px;
+}
+  
+input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 3px;
+}
+  
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+  
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}

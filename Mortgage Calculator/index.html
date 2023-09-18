@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Wassgoodiiee Mortgage Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Mortgage Calculator</h1>
+  <div class="calculator">
+    <label for="loan-amount">Loan Amount:</label>
+    <input type="number" id="loan-amount" placeholder="Loan Amount">
+    <label for="interest-rate">Interest Rate (%):</label>
+    <input type="number" id="interest-rate" placeholder="Interest Rate">
+    <label for="loan-term">Loan Term (years):</label>
+    <input type="number" id="loan-term" placeholder="Loan Term">
+
+    <button onclick="calculateMonthlyPayment()">Calculate</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
